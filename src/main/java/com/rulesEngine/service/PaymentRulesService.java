@@ -1,15 +1,17 @@
 package com.rulesEngine.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.rulesEngine.entity.PaymentRules;
 import com.rulesEngine.entity.PaymentType;
 import com.rulesEngine.repo.PaymentTypeRepository;
 import com.rulesEngine.repo.PaymentRulesRepository;
 
-//TODO: Implement service class
+@Service("PaymentRulesServiceImpl")
 public class PaymentRulesService {
 
 	@Autowired(required = true)
@@ -26,19 +28,28 @@ public class PaymentRulesService {
 		return PaymentRulesRepository.findAll();
 	}
 
-	public PaymentRules getPaymentRule() {
-		return null;
+	public Optional<PaymentRules> getPaymentRule(Integer id) {
+		return PaymentRulesRepository.findById(id);
 	}
 
-	public PaymentRules addRule() {
-		return null;
+	public PaymentRules addRule(PaymentRules paymentRules) {
+		return PaymentRulesRepository.save(paymentRules);
 	}
 
-	public PaymentRules deleteRule() {
-		return null;
+	public boolean deleteRule(Integer paymentRulesId) {
+		if (PaymentRulesRepository.getById(paymentRulesId)!=null) {
+			PaymentRulesRepository.deleteById(paymentRulesId);
+			return true;
+		}
+		return false;
 	}
 	
-	public PaymentRules updateRule() {
-		return null;
+	public PaymentRules updateRule(PaymentRules paymentRules) {
+		Optional<PaymentRules> paymentRulesReference = PaymentRulesRepository.findById(paymentRules.getPaymentRuleId());
+		if (paymentRulesReference!=null)
+		return PaymentRulesRepository.save(paymentRules);
+		else
+			//handle error
+		return paymentRules;
 	}
 }

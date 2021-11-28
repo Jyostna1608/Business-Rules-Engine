@@ -18,6 +18,7 @@ public class Payment {
 	private String paymentType;
 	@Column
 	private String rules;
+	
 	public Integer getPayentId() {
 		return payentId;
 	}

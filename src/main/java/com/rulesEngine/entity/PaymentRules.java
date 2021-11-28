@@ -19,5 +19,25 @@ public class PaymentRules {
 	@Column
 	private String paymentRule;
 	
+	public Integer getPaymentRuleId() {
+		return PaymentRuleId;
+	}
+	public void setPaymentRuleId(Integer paymentRuleId) {
+		PaymentRuleId = paymentRuleId;
+	}
+	public String getPaymentRuleType() {
+		return paymentRuleType;
+	}
+	public void setPaymentRuleType(String paymentRuleType) {
+		this.paymentRuleType = paymentRuleType;
+	}
+	public String getPaymentRule() {
+		return paymentRule;
+	}
+	public void setPaymentRule(String paymentRule) {
+		this.paymentRule = paymentRule;
+	}
+	
+	
 
 }
