@@ -1,5 +1,4 @@
 package com.rulesEngine.entity;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -36,8 +35,5 @@ public class PaymentRules {
 	}
 	public void setPaymentRule(String paymentRule) {
 		this.paymentRule = paymentRule;
-	}
-	
-	
-
+	}	
 }

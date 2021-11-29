@@ -11,7 +11,7 @@ import com.rulesEngine.entity.PaymentType;
 import com.rulesEngine.repo.PaymentTypeRepository;
 import com.rulesEngine.repo.PaymentRulesRepository;
 
-@Service("PaymentRulesServiceImpl")
+@Service("PaymentRulesService")
 public class PaymentRulesService {
 
 	@Autowired(required = true)
@@ -53,3 +53,4 @@ public class PaymentRulesService {
 		return paymentRules;
 	}
 }
+

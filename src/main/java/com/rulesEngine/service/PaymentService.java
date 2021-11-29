@@ -11,7 +11,7 @@ import com.rulesEngine.entity.PaymentRules;
 import com.rulesEngine.repo.PaymentRepository;
 import com.rulesEngine.repo.PaymentRulesRepository;
 
-@Service("PaymentServiceImpl")
+@Service("PaymentService")
 public class PaymentService {
 
 	@Autowired(required = true)
@@ -35,30 +35,33 @@ public class PaymentService {
 
 		List<PaymentRules> rulesList = paymentRulesRepository.findAll();
 		for (PaymentRules rules : rulesList) {
-			if (rules.getPaymentRuleType().length() < 1) {
-				compareAndAddRule(payment, payment.getPaymentType(), rules);
+			if (rules.getPaymentRule().length() <= 1) {
+				if (payment.getPaymentType().equalsIgnoreCase(rules.getPaymentRule())) {
+				  compareAndAddRule(payment, payment.getPaymentType(), rules);
+				}
 			} else {
-				String[] ruleTypes = rules.getPaymentRuleType().split("|");
+				String[] ruleTypes = rules.getPaymentRule().split("|");
 				for (String ruletype : ruleTypes) {
-					compareAndAddRule(payment, ruletype, rules);
+					if(payment.getPaymentType().equalsIgnoreCase(ruletype)){
+					 compareAndAddRule(payment, payment.getPaymentType(), rules);
+					}
 				}
 			}
 		}
 	}
 
 	private void compareAndAddRule(Payment payment, String ruletype, PaymentRules rules) {
-		if (payment.getPaymentType().equalsIgnoreCase(ruletype)) {
-			if (!payment.getRules().isEmpty()) {
-				payment.setRules("," + rules.getPaymentRule());
+		
+			if (payment.getRules()!= null && !payment.getRules().isEmpty()) {
+				payment.setRules(payment.getRules() + "," + rules.getPaymentRuleType());
 			} else {
-				payment.setRules(rules.getPaymentRule());
+				payment.setRules(rules.getPaymentRuleType());
 			}
-		}
 
 	}
 
 	public Payment updatePayment(Payment payment) {
-		Optional<Payment> paymentRecord = paymentRepository.findById(payment.getPayentId());
+		Optional<Payment> paymentRecord = paymentRepository.findById(payment.getPaymentId());
 		if (paymentRecord != null)
 			return paymentRepository.save(payment);
 		else

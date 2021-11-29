@@ -13,17 +13,17 @@ public class Payment {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer payentId;
+	private Integer paymentId;
 	@Column
 	private String paymentType;
 	@Column
 	private String rules;
 	
-	public Integer getPayentId() {
-		return payentId;
+	public Integer getPaymentId() {
+		return paymentId;
 	}
-	public void setPayentId(Integer payentId) {
-		this.payentId = payentId;
+	public void setPayentId(Integer paymentId) {
+		this.paymentId = paymentId;
 	}
 	public String getPaymentType() {
 		return paymentType;
@@ -39,3 +39,4 @@ public class Payment {
 	}
 	
 }
+

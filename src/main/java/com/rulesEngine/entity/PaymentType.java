@@ -10,17 +10,17 @@ import javax.persistence.Table;
 public class PaymentType {
 	
 	@Id
-	private Integer payentTypeId;
+	private String paymentTypeId;
 	
 	@Column
 	private String paymentType;
 
-	public Integer getPayentTypeId() {
-		return payentTypeId;
+	public String getPaymentTypeId() {
+		return paymentTypeId;
 	}
 
-	public void setPayentTypeId(Integer payentTypeId) {
-		this.payentTypeId = payentTypeId;
+	public void setPaymentTypeId(String paymentTypeId) {
+		this.paymentTypeId = paymentTypeId;
 	}
 
 	public String getPaymentType() {
@@ -30,7 +30,4 @@ public class PaymentType {
 	public void setPaymentType(String paymentType) {
 		this.paymentType = paymentType;
 	}
-
-	
-	
 }
