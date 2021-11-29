@@ -1,0 +1,152 @@
+
+Post:
+http://localhost:8081/Payment/addPayment
+
+Request:
+{
+    "paymentType" : "C"
+}
+Response Body:
+{
+    "paymentId": 14,
+    "paymentType": "C",
+    "rules": "activate that membership,e-mail the owner and inform them of the activation/upgrade"
+}
+-------------
+RequestBody:
+{
+    "paymentType" : "A"
+}
+Response Body:
+{
+    "paymentId": 15,
+    "paymentType": "A",
+    "rules": "generate a packing slip for shipping,generate a commission payment to the agent"
+}
+--------------
+RequestBody:
+{
+    "paymentType" : "B"
+}
+Response Body:
+{
+    "paymentId": 16,
+    "paymentType": "B",
+    "rules": "create a duplicate packing slip for the royalty department,generate a commission payment to the agent"
+}
+---------------
+RequestBody:
+{
+    "paymentType" : "C"
+}
+Response Body:
+{
+    "paymentId": 17,
+    "paymentType": "C",
+    "rules": "activate that membership,e-mail the owner and inform them of the activation/upgrade"
+}
+
+---------------
+RequestBody:
+{
+    "paymentType" : "D"
+}
+Response Body:
+{
+    "paymentId": 18,
+    "paymentType": "D",
+    "rules": "apply theupgrade,e-mail the owner and inform them of the activation/upgrade"
+}
+----------------
+RequestBody:
+{
+    "paymentType" : "E"
+}
+Response Body:
+{
+    "paymentId": 19,
+    "paymentType": "E",
+    "rules": "add a free “First Aid” video to the packing slip (the result of a court"
+}
+----------------
+
+Get Payment:
+http://localhost:8081/Payment/getPayment/19
+
+{
+    "paymentId": 19,
+    "paymentType": "E",
+    "rules": "add a free “First Aid” video to the packing slip (the result of a court"
+}
+-----------------
+
+Get Payment Types
+http://localhost:8081/PaymentRules/getPaymentTypes
+
+ResponseBody
+[
+    {
+        "paymentTypeId": "A",
+        "paymentType": "Physical Product"
+    },
+    {
+        "paymentTypeId": "B",
+        "paymentType": "Book"
+    },
+    {
+        "paymentTypeId": "C",
+        "paymentType": "Membership"
+    },
+    {
+        "paymentTypeId": "D",
+        "paymentType": "Upgrade"
+    },
+    {
+        "paymentTypeId": "E",
+        "paymentType": "Video"
+    }
+]
+
+----------------------
+get Payment Rules:
+http://localhost:8081/PaymentRules/getPaymentRules
+
+ResponseBody
+[
+    {
+        "paymentRuleType": "generate a packing slip for shipping",
+        "paymentRule": "A",
+        "paymentRuleId": 1
+    },
+    {
+        "paymentRuleType": "create a duplicate packing slip for the royalty department",
+        "paymentRule": "B",
+        "paymentRuleId": 2
+    },
+    {
+        "paymentRuleType": "activate that membership",
+        "paymentRule": "C",
+        "paymentRuleId": 3
+    },
+    {
+        "paymentRuleType": "apply theupgrade",
+        "paymentRule": "D",
+        "paymentRuleId": 4
+    },
+    {
+        "paymentRuleType": "add a free “First Aid” video to the packing slip (the result of a court",
+        "paymentRule": "E",
+        "paymentRuleId": 5
+    },
+    {
+        "paymentRuleType": "e-mail the owner and inform them of the activation/upgrade",
+        "paymentRule": "C|D",
+        "paymentRuleId": 6
+    },
+    {
+        "paymentRuleType": "generate a commission payment to the agent",
+        "paymentRule": "A|B",
+        "paymentRuleId": 7
+    }
+]
+------------------------------
